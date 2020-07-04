@@ -30,4 +30,4 @@ RUN chmod +x ./entrypoint.sh
 RUN ls
 RUN cat ./entrypoint.sh
 #ENTRYPOINT ./entrypoint.sh
-ENTRYPOINT exec dotnet albiondata-sql-dotNet.dll -s server=${DB_SERVER};port=${DB_PORT};database=${DB_NAME};user=${DB_NAME};password=${DB_PASSWORD} -s ${NATS_ADDRESS}
+ENTRYPOINT exec echo "dotnet albiondata-sql-dotNet.dll -s server=${DB_SERVER};port=${DB_PORT};database=${DB_NAME};user=${DB_NAME};password=${DB_PASSWORD} -s ${NATS_ADDRESS}"; dotnet albiondata-sql-dotNet.dll -s server=${DB_SERVER};port=${DB_PORT};database=${DB_NAME};user=${DB_NAME};password=${DB_PASSWORD} -s ${NATS_ADDRESS}
