@@ -25,5 +25,6 @@ ENV DB_USER "YOUR_DB_USER"
 ENV DB_PASSWORD "YOUR_DB_PASSWORD"
 ENV NATS_ADDRESS "nats://public:thenewalbiondata@albion-online-data.com:4222"
 RUN ls
-
-ENTRYPOINT dotnet albiondata-sql-dotNet.dll-s 'server=${DB_SERVER};port=${DB_PORT};database=${DB_NAME};user=${DB_NAME};password=${DB_PASSWORD}' -s ${NATS_ADDRESS}
+RUN echo "dotnet albiondata-sql-dotNet.dll -s 'server=${DB_SERVER};port=${DB_PORT};database=${DB_NAME};user=${DB_NAME};password=${DB_PASSWORD}' -s '${NATS_ADDRESS}'" > ./entrypoint.sh
+RUN chmod +x ./entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
